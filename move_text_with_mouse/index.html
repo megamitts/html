@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Move Text with Mouse</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background-color: #222;
+        color: white;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+    #movingText {
+        position: absolute;
+        font-size: 24px;
+        font-weight: bold;
+        pointer-events: none; /* Prevent text from blocking mouse events */
+        transition: transform 0.05s linear; /* Smooth movement */
+    }
+</style>
+</head>
+<body>
+
+<div id="movingText">Move me with your mouse!</div>
+
+<script>
+    const text = document.getElementById('movingText');
+
+    // Listen for mouse movement
+    document.addEventListener('mousemove', (event) => {
+        try {
+            // Get mouse coordinates
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            // Offset so text is centered on cursor
+            const offsetX = text.offsetWidth /2;
+            const offsetY = text.offsetHeight /2;
+
+            // Move the text
+            text.style.transform = `translate(${mouseX - offsetX}px, ${mouseY - offsetY}px)`;
+        } catch (err) {
+            console.error("Error moving text:", err);
+        }
+    });
+</script>
+
+</body>
+</html>
