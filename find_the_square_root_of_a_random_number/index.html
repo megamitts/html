@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Random number/Square Root thing</title>
+
+</head>
+
+<body>
+
+
+ 
+
+<h2>Give me two numbers and I'll come up with a random number between them and give you the square root!</h2>
+
+ 
+
+<input id="num1" type="number" placeholder="First number">
+
+<input id="num2" type="number" placeholder="Second number">
+
+<button onclick="getRandomIntInclusive()">Go!</button>
+
+ 
+<p>Number chosen: <span id = "chosen">0</span></p>
+<p>Result: <span id="result">0</span></p>
+
+
+<script>
+
+
+function getRandomIntInclusive() {
+
+const a = Number(document.getElementById("num1").value);
+
+    const b = Number(document.getElementById("num2").value);
+
+let c = Math.floor(Math.random() * (b - a + 1)) + a;  
+
+document.getElementById("chosen").textContent = c;
+
+
+let numberSQ;
+let numberSIGN;
+
+
+
+numberSQ = Math.sqrt(c);
+numberSIGN = Math.sign(c);
+
+if(numberSIGN === 1){
+ 
+ // check to see if sqrt(c) is a whole number. If so print it as is. If not print to two decimal places.
+ document.getElementById("result").textContent = Number.isInteger(numberSQ) ? numberSQ : numberSQ.toFixed(2);
+ }
+else{
+ 
+ 
+ c *= -1;
+ numberSQ = Math.sqrt(c);
+ document.getElementById("result").textContent = Number.isInteger(numberSQ) ? numberSQ + "i" : numberSQ.toFixed(2) + "i";
+ 
+ }
+ 
+ }
+
+//// Display the result
+
+    //document.getElementById("result").textContent = sum;
+
+</script>
+
+
+
+ 
+
+</body>
+
+</html>
